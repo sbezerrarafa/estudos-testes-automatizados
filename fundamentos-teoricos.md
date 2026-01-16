@@ -1,37 +1,93 @@
-Utilize um sistema de tipagem estática e um linter para detectar erros básicos, como erros de digitação e de sintaxe.
+# 🧪 Anotações sobre Testes Automatizados
 
-Escreva testes unitários eficazes que visem o comportamento e a funcionalidade críticos da sua aplicação.
+## 🧱 Boas práticas iniciais
 
-Desenvolva testes de integração para auditar sua aplicação de forma holística e garantir que tudo funcione corretamente em harmonia.
+- Utilize um sistema de **tipagem estática** e um **linter** para detectar erros básicos:
+  - Erros de digitação
+  - Erros de sintaxe
 
-Crie testes funcionais de ponta a ponta (e2e) para testes automatizados de cliques em caminhos críticos, em vez de depender dos seus usuários para fazer isso.
+---
 
-Testes funcionais de ponta a ponta (E2E - End-to-End) simulam o fluxo completo de um usuário real em um sistema, validando desde a interface (front-end) até o banco de dados e integrações externas, garantindo que todos os componentes funcionem juntos de forma integrada e correta, do início ao fim, como em um cenário de produção
+## 🧪 Tipos de testes
 
+### Testes Unitários
+- São os **mais rápidos**
+- Testam **pequenos trechos do código**
+- Exemplo:
+  - Funções isoladas
 
-e2e - mais lentos
-integrations  - mais ou menos
-unit - mais rapidos porque pegam somente pequenos trechos do codigo como por exemplo funções
+---
 
+### Testes de Integração
+- Velocidade **intermediária**
+- Envolvem:
+  - Interceptar ações
+  - Clicar em botões
+  - Verificar se existe conteúdo dentro de uma página
+  - Navegar de uma tela para outra
 
-jest dom - cria um dom virtual para o teste
-library/react- somente escolhendo o framework
-user-event- para mapear testes do usuario,por exemplo clique, form ...
-vitest/coverage-v8 - serve para testar a cobertura de teste do projeto
-vitest- o proprio framework de teste
-path- para mover pelos camnihos dos testes
+**Exemplo:**
+- No *Pokemon Details*:
+  - Renderizo a página
+  - Verifico se os dados estão sendo exibidos
 
+> Apesar de parecer teste unitário, isso é **teste de integração**.
 
-mockados exemplo
+---
 
-vi.mock("reat-router-dom",() =>({
-  useNavigate(){
+### Testes End-to-End (E2E)
+- São os **mais lentos**
+- Testam o fluxo completo do usuário
+- Validam a aplicação do início ao fim
+- Evitam depender dos usuários para encontrar erros
+
+---
+
+## 🔁 Comparação de desempenho
+
+- **Unit** → mais rápidos  
+- **Integration** → velocidade intermediária  
+- **E2E** → mais lentos  
+
+---
+
+## 🔁 TDD — Test Driven Development
+
+- Você escreve os **testes antes** de escrever o código
+- O código é desenvolvido para fazer o teste passar
+
+---
+
+## 🧰 Ferramentas de Testes
+
+- **jest-dom**  
+  Cria um DOM virtual para o teste.
+
+- **@testing-library/react**  
+  Biblioteca usada apenas para escolher o framework e testar componentes React.
+
+- **@testing-library/user-event**  
+  Usada para mapear ações do usuário, como:
+  - Cliques
+  - Formulários
+  - Interações na interface
+
+- **vitest**  
+  Framework de testes.
+
+- **vitest/coverage-v8**  
+  Serve para testar a **cobertura de testes** do projeto.
+
+- **path**  
+  Usado para navegar pelos caminhos dos arquivos de teste.
+
+---
+
+## 🎭 Mock (exemplo anotado)
+
+```ts
+vi.mock("react-router-dom", () => ({
+  useNavigate() {
     return vi.fn()
   }
 }))
-
-TDD - você escreve os teste antes de escrever propriamente dito o codigo
-
-testes de integração - intercepetando, cliacnado botoes, vendo se tem um conteudo dentro de uma pagina, quando eu navego de uma tela para a outra.
-
-por exemplo no pokemon details, quando renderizo uma pagina e vejo se tem os dados dentro dela, basicamente está sendo escrito o teste unitarios
