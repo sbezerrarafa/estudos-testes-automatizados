@@ -31,3 +31,7 @@ vi.mock("reat-router-dom",() =>({
 }))
 
 TDD - você escreve os teste antes de escrever propriamente dito o codigo
+
+testes de integração - intercepetando, cliacnado botoes, vendo se tem um conteudo dentro de uma pagina, quando eu navego de uma tela para a outra.
+
+por exemplo no pokemon details, quando renderizo uma pagina e vejo se tem os dados dentro dela, basicamente está sendo escrito o teste unitarios

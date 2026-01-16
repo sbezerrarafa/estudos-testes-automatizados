@@ -2,8 +2,14 @@ describe("Testa a página de login", () => {
   it("Quando clicar em login deve ir para a página de Dashboard", () => {
     cy.visit("/");
 
+    // cy.contains("Login").click(); // aqui o cara intercepta o botao que tem o login
+    // cy.contains("Dashboard");// aqui o cara intercepta se na pagina tem o termo Dashboard,,parece muito com os testes unitarios
+    // //do react lib test
+
+
+
     cy.intercept("GET", "http://localhost:3000/pokemon", {
-      fixture: "pokemons.json",
+      fixture: "pokemons.json",// os fixtures são os mocks de api praticamente
     });
 
     cy.get("button").click();
@@ -28,6 +34,7 @@ describe("Testa a página de login", () => {
     });
 
     cy.get("button").click();
+    // ou pegar o botao deste jeito aqui     cy.contains("Login").click();
     cy.contains("Dashboard");
     cy.contains("Pikachu");
   });
